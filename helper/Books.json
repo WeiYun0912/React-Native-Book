@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "uri": "https://isbn.ncl.edu.tw/NEW_ISBNNet/main_DisplayResults.php?Pact=ShowFronPage&Pisbn=9789863384328"
+  },
+
+  {
+    "id": 2,
+    "uri": "https://isbn.ncl.edu.tw/NEW_ISBNNet/main_DisplayResults.php?Pact=ShowFronPage&Pisbn=9789861616698"
+  },
+  {
+    "id": 3,
+    "uri": "https://isbn.ncl.edu.tw/NEW_ISBNNet/main_DisplayResults.php?Pact=ShowFronPage&Pisbn=9789860676969"
+  },
+  {
+    "id": 4,
+    "uri": "https://isbn.ncl.edu.tw/NEW_ISBNNet/main_DisplayResults.php?Pact=ShowFronPage&Pisbn=9789860676938 "
+  },
+  {
+    "id": 5,
+    "uri": "https://isbn.ncl.edu.tw/NEW_ISBNNet/main_DisplayResults.php?Pact=ShowFronPage&Pisbn=9789863384687"
+  }
+]
