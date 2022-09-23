@@ -4,6 +4,8 @@ import Text from "../../helper/NotosFont";
 import BooksData from "../../helper/Books.json";
 
 //首頁的 新增的書籍 ScrollView
+
+//https://isbn.ncl.edu.tw/NEW_ISBNNet/main_DisplayResults.php?Pact=ShowFronPage&Pisbn=ISBN
 const HomeBooks = () => {
   return (
     <View

@@ -1,16 +1,28 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
-import { View, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity, ScrollView } from "react-native";
 import { ListItem, SearchBar, Icon } from "@rneui/themed";
 import { QUERY_BOOKS } from "../../gql/gql";
 import Text from "../../helper/NotosFont";
+import LottieView from "lottie-react-native";
 
 //所有書籍頁面
 const ViewBooks = () => {
   const { data, loading, error } = useQuery(QUERY_BOOKS);
 
   if (loading) {
-    return <Text>Loading...</Text>;
+    return (
+      <LottieView
+        style={{
+          height: 500,
+          alignSelf: "center",
+        }}
+        source={require("../../assets/animations/loading.json")}
+        autoPlay
+        speed={0.5}
+        loop={true}
+      />
+    );
   }
 
   if (error) {

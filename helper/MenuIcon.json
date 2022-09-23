@@ -3,32 +3,43 @@
     "name": "book",
     "type": "font-awesome",
     "color": "#f5f5f5",
-    "text": "所有書籍"
+    "text": "所有書籍",
+    "screen": "BooksView"
   },
   {
     "name": "search",
     "type": "font-awesome",
     "color": "#f5f5f5",
-    "text": "查詢書籍"
+    "text": "查詢書籍",
+    "screen": "SearchBookView"
   },
-
+  {
+    "name": "atlas",
+    "type": "font-awesome-5",
+    "color": "#f5f5f5",
+    "text": "線上查詢",
+    "screen": "SearchOnlineBookView"
+  },
   {
     "name": "plus",
     "type": "font-awesome",
     "color": "#f5f5f5",
-    "text": "新增書籍"
+    "text": "新增書籍",
+    "screen": "HomeView"
   },
   {
     "name": "refresh",
     "type": "font-awesome",
     "color": "#f5f5f5",
-    "text": "更新書籍"
+    "text": "更新書籍",
+    "screen": "HomeView"
   },
 
   {
     "name": "trash",
     "type": "font-awesome",
     "color": "#f5f5f5",
-    "text": "刪除書籍"
+    "text": "刪除書籍",
+    "screen": "HomeView"
   }
 ]

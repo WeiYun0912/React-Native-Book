@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { FAB, Icon } from "@rneui/themed";
 import { ScrollView, View } from "react-native";
-import ViewBooks from "../components/Books/ViewBooks";
+import Books from "../components/Books/Books";
 
-const Books = () => {
+const BooksView = () => {
   const ref = useRef();
 
   const goTop = () => {
@@ -11,9 +11,9 @@ const Books = () => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <ScrollView style={{ backgroundColor: "#fff" }} ref={ref}>
-        <ViewBooks />
+        <Books />
       </ScrollView>
       <FAB
         style={{
@@ -32,4 +32,4 @@ const Books = () => {
   );
 };
 
-export default Books;
+export default BooksView;

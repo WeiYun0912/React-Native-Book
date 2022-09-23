@@ -6,12 +6,12 @@ import HomeBanner from "../components/Home/HomeBanner";
 import HomeBooks from "../components/Home/HomeBooks";
 import HomeMenu from "../components/Home/HomeMenu";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
       <View style={{ marginBottom: 10 }}>
         <HomeBanner />
-        <HomeMenu />
+        <HomeMenu navigation={navigation} />
         <HomeBooks />
       </View>
     </ScrollView>

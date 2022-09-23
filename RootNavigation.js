@@ -2,8 +2,11 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FontAwesomeIcons from "react-native-vector-icons/FontAwesome";
-import Home from "./screens/Home";
-import Books from "./screens/Books";
+import FontAwesomeIcons5 from "react-native-vector-icons/FontAwesome5";
+import HomeView from "./screens/HomeView";
+import BooksView from "./screens/BooksView";
+import SearchBookView from "./screens/SearchBookView";
+import SearchOnlineBookView from "./screens/SearchOnlineBookView";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -18,10 +21,10 @@ export default function RootNavigation() {
   return (
     <ApolloProvider client={client}>
       <NavigationContainer>
-        <BottomTab.Navigator initialRouteName="Home">
+        <BottomTab.Navigator initialRouteName="HomeView">
           <BottomTab.Screen
-            name="Home"
-            component={Home}
+            name="HomeView"
+            component={HomeView}
             options={{
               tabBarLabel: "首頁",
               tabBarActiveTintColor: "#e5634d",
@@ -38,8 +41,8 @@ export default function RootNavigation() {
           />
 
           <BottomTab.Screen
-            name="Books"
-            component={Books}
+            name="BooksView"
+            component={BooksView}
             options={{
               title: "所有書籍",
               tabBarLabel: "所有書籍",
@@ -56,11 +59,11 @@ export default function RootNavigation() {
           />
 
           <BottomTab.Screen
-            name="SearchBook"
-            component={Home}
+            name="SearchBookView"
+            component={SearchBookView}
             options={{
-              title: "搜尋書籍",
-              tabBarLabel: "搜尋書籍",
+              title: "查詢書籍",
+              tabBarLabel: "查詢書籍",
               // tabBarBadge: 5,
               tabBarActiveTintColor: "#e5634d",
               tabBarLabelStyle: {
@@ -69,6 +72,24 @@ export default function RootNavigation() {
               },
               tabBarIcon: ({ color }) => (
                 <FontAwesomeIcons color={color} name="search" size={30} />
+              ),
+            }}
+          />
+
+          <BottomTab.Screen
+            name="SearchOnlineBookView"
+            component={SearchOnlineBookView}
+            options={{
+              title: "線上查詢",
+              tabBarLabel: "線上查詢",
+              // tabBarBadge: 5,
+              tabBarActiveTintColor: "#e5634d",
+              tabBarLabelStyle: {
+                fontSize: 14,
+                fontWeight: "bold",
+              },
+              tabBarIcon: ({ color }) => (
+                <FontAwesomeIcons5 color={color} name="atlas" size={30} />
               ),
             }}
           />

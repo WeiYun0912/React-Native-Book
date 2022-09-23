@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "react-native-book",
+    "name": "阿娟圖書館",
     "slug": "react-native-book",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,16 +14,14 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#844315"
       },
       "package": "com.weiwei0912.reactnativebook"
     },

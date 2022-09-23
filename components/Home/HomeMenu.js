@@ -5,7 +5,7 @@ import { SearchBar, Icon } from "@rneui/themed";
 import MenuIconsData from "../../helper/MenuIcon.json";
 
 //首頁的搜尋欄
-const HomeMenu = () => {
+const HomeMenu = ({ navigation }) => {
   const [searchText, setSearchText] = useState("");
 
   const updateSearch = (search) => {
@@ -42,12 +42,12 @@ const HomeMenu = () => {
           leftIconContainerStyle={{ display: "none" }}
         />
       </View>
-      <MenuIcons />
+      <MenuIcons navigation={navigation} />
     </View>
   );
 };
 
-const MenuIcons = () => {
+const MenuIcons = ({ navigation }) => {
   return (
     <View
       style={{
@@ -58,7 +58,11 @@ const MenuIcons = () => {
       }}
     >
       {MenuIconsData.map((icon) => (
-        <TouchableOpacity key={icon.name} activeOpacity={0.9}>
+        <TouchableOpacity
+          key={icon.name}
+          activeOpacity={0.9}
+          onPress={() => navigation.navigate(icon.screen)}
+        >
           <View style={{ alignItems: "center", padding: 5 }}>
             <Icon
               name={icon.name}
