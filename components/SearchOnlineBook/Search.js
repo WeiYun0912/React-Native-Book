@@ -18,14 +18,18 @@ const Search = ({
       if (searchISBN.length == 13) {
         setSeacrhLoading(true);
         let response = await axios.post(
-          "https://online-library-puppeteer.herokuapp.com/getBooks",
+          "https://mombook-cheerio-server.onrender.com/getBooks",
           {
             ISBN: searchISBN,
           }
         );
+
+        //確認使用者是否已經擁有這本書即
         checkBookExists({ variables: { isbn: searchISBN } });
         setSeacrhLoading(false);
+        //將startSearching更改為true 讓詢問畫面出現
         setStartSearching(true);
+        //清空錯誤訊息
         setErrorMessage("");
         setBookData(response.data);
       }

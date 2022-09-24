@@ -15,6 +15,10 @@ const CheckBookExists = ({
     return null;
   }
 
+  if (bookExists?.searchBook == undefined) {
+    return null;
+  }
+
   // true = 已經有這本書了 詢問使用者要不要新增書籍資料
   console.log(bookExists?.searchBook);
   return (

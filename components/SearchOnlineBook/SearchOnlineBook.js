@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 
 import Text from "../../helper/NotosFont";
 import Search from "./Search";
@@ -7,13 +7,19 @@ import Book from "./Book";
 import { useLazyQuery } from "@apollo/client";
 import { QUERY_BOOK_EXISTS } from "../../gql/gql";
 import CheckBookExists from "./CheckBookExists";
+import ScanBook from "../Common/ScanBook";
 
 //輸入ISBN進行線上查詢 查詢依據為國家圖書館
 const SearchOnlineBook = () => {
-  // 9789577627124
+  // 設定ISBN文字
   const [searchISBN, setSearchISBN] = useState("");
 
+  //當搜尋時將searchLoading設為true
   const [searchLoading, setSeacrhLoading] = useState(false);
+
+  //判斷是否開始搜尋 用意為 搜尋到的書籍會與資料庫的書籍做匹配 要是已經存在的話就會顯示已經有這本書
+  //但是沒有這本書的話 會跳出詢問畫面 詢問是否要幫助使用者將該本書的資料新增到資料庫
+  //按下需要或不需要時都會將startSearcing重新設置為false 防止詢問畫面出現
   const [startSearching, setStartSearching] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [checkBookExists, { data: bookExists }] =
@@ -32,6 +38,7 @@ const SearchOnlineBook = () => {
         setSearchISBN={setSearchISBN}
         checkBookExists={checkBookExists}
       />
+      <ScanBook setSearchText={setSearchISBN} />
       <View style={{ flex: 3 }}>
         <Book bookData={bookData} errorMessage={errorMessage} />
       </View>

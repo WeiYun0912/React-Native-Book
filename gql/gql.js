@@ -7,6 +7,7 @@ export const QUERY_BOOKS = gql`
         books {
           id
           name
+          position
           authorAndPublish {
             authorName
             publishName
@@ -31,7 +32,9 @@ export const QUERY_BOOK = gql`
     book(name: $name, ISBN: $isbn) {
       id
       name
+      position
       createAt
+      haveImage
       authorAndPublish {
         authorName
         publishName

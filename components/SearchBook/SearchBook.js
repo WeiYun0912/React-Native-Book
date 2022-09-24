@@ -8,8 +8,9 @@ import Books from "./Books";
 import Search from "./Search";
 import LottieView from "lottie-react-native";
 import SearchButtonGroup from "./SearchButtonGroup";
-import ScanBook from "./ScanBook";
 import { Button } from "@rneui/base";
+import ScanBook from "../Common/ScanBook";
+import BookArea from "./BookArea";
 
 const buttonGroupText = ["書籍名稱", "作者名稱", "出版社名稱", "ISBN"];
 
@@ -57,6 +58,8 @@ const SearchBook = () => {
         selectedIndex={selectedIndex}
         setSelectedIndex={setSelectedIndex}
       />
+
+      <BookArea />
 
       <View style={{ padding: 10 }}>
         <Button buttonStyle={{ borderRadius: 5 }} onPress={searchBookByText}>

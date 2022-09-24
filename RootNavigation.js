@@ -13,8 +13,10 @@ const BottomTab = createBottomTabNavigator();
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   // link,
-  uri: "https://mombook.herokuapp.com/graphql",
+  // uri: "https://mombook.herokuapp.com/graphql",
   // uri: "http://10.0.2.2:4000/graphql",
+  // uri: "https://mombook-graphql-server.onrender.com/graphql",
+  uri: "https://sleepy-coral.cyclic.app/graphql",
 });
 
 export default function RootNavigation() {

@@ -46,6 +46,7 @@ const ViewBooks = () => {
               <ListItem.Title right style={{ color: "green", fontSize: 15 }}>
                 {book.authorAndPublish.publishName}
               </ListItem.Title>
+              <ListItem.Subtitle>書籍位置:{book.position}</ListItem.Subtitle>
             </ListItem.Content>
           </ListItem>
         </TouchableOpacity>

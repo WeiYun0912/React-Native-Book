@@ -74,12 +74,6 @@ const ScanBook = ({ setSearchText }) => {
           />
         </Dialog>
       </View>
-      {/* <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : handleBarCdoeScanned}
-          style={{ height: 400, width: 400 }}
-        /> */}
-
-      {/* {scanned && <Button onPress={() => setScanned(false)}>再次掃描</Button>} */}
     </View>
   );
 };

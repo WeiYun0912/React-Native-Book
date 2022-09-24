@@ -3,7 +3,7 @@ import { TouchableOpacity } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 import Text from "../../helper/NotosFont";
 
-const Books = ({ data, startSearching }) => {
+const Books = ({ data }) => {
   if (data?.book.length == 0) {
     return (
       <Text style={{ fontSize: 24, color: "#ff0000", textAlign: "center" }}>
@@ -28,6 +28,7 @@ const Books = ({ data, startSearching }) => {
               <ListItem.Title right style={{ color: "green", fontSize: 15 }}>
                 {book.authorAndPublish.publishName}
               </ListItem.Title>
+              <ListItem.Subtitle>書籍位置:{book.position}</ListItem.Subtitle>
             </ListItem.Content>
           </ListItem>
         </TouchableOpacity>
