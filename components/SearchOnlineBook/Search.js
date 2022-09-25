@@ -53,6 +53,7 @@ const Search = ({
           placeholder="輸入國際標準書號共 13 位數字 ..."
           platform="android"
           onChangeText={changeSearchISBN}
+          value={searchISBN}
         />
       </View>
       <View style={{ padding: 10 }}>

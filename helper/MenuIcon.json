@@ -32,7 +32,7 @@
     "type": "font-awesome",
     "color": "#f5f5f5",
     "text": "更新書籍",
-    "screen": "HomeView"
+    "screen": "UpdateBookView"
   },
 
   {

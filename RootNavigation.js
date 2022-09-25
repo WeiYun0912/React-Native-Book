@@ -7,6 +7,7 @@ import HomeView from "./screens/HomeView";
 import BooksView from "./screens/BooksView";
 import SearchBookView from "./screens/SearchBookView";
 import SearchOnlineBookView from "./screens/SearchOnlineBookView";
+import UpdateBookView from "./screens/UpdateBookView";
 
 const BottomTab = createBottomTabNavigator();
 
@@ -93,6 +94,20 @@ export default function RootNavigation() {
               tabBarIcon: ({ color }) => (
                 <FontAwesomeIcons5 color={color} name="atlas" size={30} />
               ),
+            }}
+          />
+
+          <BottomTab.Screen
+            name="UpdateBookView"
+            component={UpdateBookView}
+            options={{
+              title: "更新書籍資料",
+
+              tabBarItemStyle: {
+                display: "none",
+              },
+              // tabBarBadge: 5,
+              tabBarActiveTintColor: "#e5634d",
             }}
           />
           {/* <BottomTab.Screen

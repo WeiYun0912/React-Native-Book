@@ -27,7 +27,23 @@ export const QUERY_AUTHORS = gql`
   }
 `;
 
-export const QUERY_BOOK = gql`
+export const QUERY_BOOK_BY_PUBLISH_AUTHOR = gql`
+  query Query($publishName: String, $authorName: String) {
+    filterBook(publishName: $publishName, authorName: $authorName) {
+      books {
+        id
+        name
+        position
+        authorAndPublish {
+          authorName
+          publishName
+        }
+      }
+    }
+  }
+`;
+
+export const QUERY_BOOK_BY_BOOKNAME_ISBN = gql`
   query Book($name: String, $isbn: String) {
     book(name: $name, ISBN: $isbn) {
       id
@@ -35,6 +51,7 @@ export const QUERY_BOOK = gql`
       position
       createAt
       haveImage
+      ISBN
       authorAndPublish {
         authorName
         publishName
@@ -70,6 +87,15 @@ export const MUTATION_CREATE_PUBLISH = gql`
 export const MUTATION_CREATE_BOOK = gql`
   mutation Mutation($input: BookInput!) {
     createBook(input: $input) {
+      id
+      name
+    }
+  }
+`;
+
+export const MUTATION_UPDATE_BOOK = gql`
+  mutation Mutation($input: UpdateBookInput) {
+    updateBook(input: $input) {
       id
       name
     }

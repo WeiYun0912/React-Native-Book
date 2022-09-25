@@ -2,8 +2,10 @@ import { useLazyQuery } from "@apollo/client";
 
 import React, { useState } from "react";
 import { View } from "react-native";
-import { QUERY_BOOK } from "../../gql/gql";
-import Text from "../../helper/NotosFont";
+import {
+  QUERY_BOOK_BY_BOOKNAME_ISBN,
+  QUERY_BOOK_BY_PUBLISH_AUTHOR,
+} from "../../gql/gql";
 import Books from "./Books";
 import Search from "./Search";
 import LottieView from "lottie-react-native";
@@ -17,15 +19,15 @@ const buttonGroupText = ["書籍名稱", "作者名稱", "出版社名稱", "ISB
 // 作者名稱和出版社名稱搜尋還沒完成
 const SearchBook = () => {
   const [searchText, setSearchText] = useState("");
-  const [startSearching, setStartSearching] = useState(false);
 
   // 0 = 書籍名稱, 1 = 作者名稱, 2 = 出版社名稱, 3 = ISBN
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [searchBook, { loading, error, data }] = useLazyQuery(QUERY_BOOK);
-
-  if (error) {
-    return <Text>Error</Text>;
-  }
+  const [searchBook, { loading: bookLoading1, data: bookDataByNameAndISBN }] =
+    useLazyQuery(QUERY_BOOK_BY_BOOKNAME_ISBN);
+  const [
+    searchBookByFilter,
+    { loading: bookLoading2, data: bookDataByAuthorAndPublish },
+  ] = useLazyQuery(QUERY_BOOK_BY_PUBLISH_AUTHOR);
 
   const changeSearchText = (text) => {
     setSearchText(text);
@@ -33,9 +35,16 @@ const SearchBook = () => {
 
   const searchBookByText = () => {
     if (searchText != "") {
-      setStartSearching(true);
       if (selectedIndex == 0) {
         searchBook({ variables: { name: searchText } });
+      }
+
+      if (selectedIndex == 1) {
+        searchBookByFilter({ variables: { authorName: searchText } });
+      }
+
+      if (selectedIndex == 2) {
+        searchBookByFilter({ variables: { publishName: searchText } });
       }
 
       if (selectedIndex == 3) {
@@ -52,7 +61,6 @@ const SearchBook = () => {
         // searchBookByText={searchBookByText}
         selectedIndex={selectedIndex}
         buttonGroupText={buttonGroupText}
-        setStartSearching={setStartSearching}
       />
       <SearchButtonGroup
         selectedIndex={selectedIndex}
@@ -69,7 +77,7 @@ const SearchBook = () => {
 
       {selectedIndex == 3 ? <ScanBook setSearchText={setSearchText} /> : null}
 
-      {loading ? (
+      {bookLoading1 || bookLoading2 ? (
         <LottieView
           style={{
             height: 300,
@@ -81,7 +89,11 @@ const SearchBook = () => {
           loop={true}
         />
       ) : (
-        <Books data={data} startSearching={startSearching} />
+        <Books
+          bookDataByNameAndISBN={bookDataByNameAndISBN}
+          bookDataByAuthorAndPublish={bookDataByAuthorAndPublish}
+          selectedIndex={selectedIndex}
+        />
       )}
     </View>
   );
