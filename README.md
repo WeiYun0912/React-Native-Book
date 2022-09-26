@@ -6,6 +6,8 @@
 |---|
 |React Native Expo|
 |React Native Elements|
+|Expo BarCode Scanner|
+|Lottie View|
 |Node JS|
 |Cheerio|
 |Puppeteer|
@@ -22,6 +24,7 @@
 |cyclic.sh|託管GrpahQL Server|
 
 
+## APP畫面
 
 <div style='display:inline-block'>
 <img src="https://user-images.githubusercontent.com/42636085/191921928-c7a9f19e-4309-4571-974b-fc1dfdc129ae.jpg" width="300"/>
