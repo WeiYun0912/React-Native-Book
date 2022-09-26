@@ -2,10 +2,17 @@
 
 ## 使用工具 (套件)
 
-|套件名稱|
+|套件與工具名稱|
 |---|
 |React Native Expo|
-
+|React Native Elements|
+|Node JS|
+|Cheerio|
+|Puppeteer|
+|Mongo DB|
+|Mongoose|
+|GraphQL|
+|Apollo Server & Apollo Client|
 
 
 <div style='display:inline-block'>
