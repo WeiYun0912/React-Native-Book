@@ -14,6 +14,14 @@
 |GraphQL|
 |Apollo Server & Apollo Client|
 
+## 部署網站 (Cloud)
+
+|託管網站名稱|說明|
+|---|--|
+|onrender|託管Cheerio Server 每15分鐘休眠一次 有用uptimebot去喚醒 所以需要注意時數|
+|cyclic.sh|託管GrpahQL Server|
+
+
 
 <div style='display:inline-block'>
 <img src="https://user-images.githubusercontent.com/42636085/191921928-c7a9f19e-4309-4571-974b-fc1dfdc129ae.jpg" width="300"/>
