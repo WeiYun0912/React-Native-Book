@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_BOOKS = gql`
-  query Books {
-    books {
+  query Books($filter: FilterInput) {
+    books(filter: $filter) {
       ... on BooksSuccessResult {
         books {
           id

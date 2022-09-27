@@ -2,8 +2,10 @@ import { useLazyQuery, useMutation } from "@apollo/client";
 import { Button, Input } from "@rneui/base";
 import React, { useState, useEffect } from "react";
 import { View } from "react-native";
+import LottieView from "lottie-react-native";
 import ScanBook from "../Common/ScanBook";
-import Search from "./Search";
+import Search from "../Common/Search";
+
 import {
   QUERY_BOOK_BY_BOOKNAME_ISBN,
   MUTATION_UPDATE_BOOK,
@@ -12,7 +14,7 @@ import {
 const UpdateBook = () => {
   const [searchText, setSearchText] = useState("");
   const [startLoading, setStartLoading] = useState(false);
-  const [searchBook, { loading, data, refetch }] = useLazyQuery(
+  const [searchBook, { loading, data }] = useLazyQuery(
     QUERY_BOOK_BY_BOOKNAME_ISBN
   );
   const [updateBook] = useMutation(MUTATION_UPDATE_BOOK);
@@ -26,35 +28,25 @@ const UpdateBook = () => {
     console.log(searchText);
     if (searchText != "") {
       searchBook({ variables: { isbn: searchText } });
-      setStartLoading(true);
       setBookData(data);
     }
   };
 
   useEffect(() => {
-    if (!loading && data) {
+    if (!loading && data && data?.book != "") {
       setBookData({
-        ISBN: data.book[0].ISBN,
-        bookName: data.book[0].name,
-        authorName: data.book[0].authorAndPublish.authorName,
-        publishName: data.book[0].authorAndPublish.publishName,
-        position: data.book[0].position,
+        ISBN: data?.book[0]?.ISBN,
+        bookName: data?.book[0]?.name,
+        authorName: data?.book[0]?.authorAndPublish.authorName,
+        publishName: data?.book[0]?.authorAndPublish.publishName,
+        position: data?.book[0]?.position,
       });
+
+      setStartLoading(true);
+    } else {
+      setStartLoading(false);
     }
   }, [loading, data, startLoading]);
-
-  //   console.log(data.book);
-
-  //   <LottieView
-  //   style={{
-  //     height: 300,
-  //     alignSelf: "center",
-  //   }}
-  //   source={require("../../assets/animations/loading.json")}
-  //   autoPlay
-  //   speed={0.5}
-  //   loop={true}
-  // />
 
   const handleInput = (inputName, text) => {
     setBookData({
@@ -75,13 +67,14 @@ const UpdateBook = () => {
         },
       },
     });
-    refetch();
-    setStartLoading(false);
+
+    console.log(bookData);
+
+    // setStartLoading(false);
   };
 
   return (
     <View>
-      {/* {console.log(bookData)} */}
       <Search searchText={searchText} changeSearchText={changeSearchText} />
 
       <View style={{ padding: 10 }}>
@@ -91,6 +84,19 @@ const UpdateBook = () => {
       </View>
 
       <ScanBook setSearchText={setSearchText} />
+
+      {loading ? (
+        <LottieView
+          style={{
+            height: 300,
+            alignSelf: "center",
+          }}
+          source={require("../../assets/animations/loading.json")}
+          autoPlay
+          speed={0.5}
+          loop={true}
+        />
+      ) : null}
 
       {startLoading ? (
         <>

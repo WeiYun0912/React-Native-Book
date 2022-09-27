@@ -7,7 +7,8 @@ import {
   QUERY_BOOK_BY_PUBLISH_AUTHOR,
 } from "../../gql/gql";
 import Books from "./Books";
-import Search from "./Search";
+// import Search from "./Search";
+import Search from "../Common/Search";
 import LottieView from "lottie-react-native";
 import SearchButtonGroup from "./SearchButtonGroup";
 import { Button } from "@rneui/base";
