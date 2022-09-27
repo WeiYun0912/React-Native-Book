@@ -1,10 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FAB, Icon } from "@rneui/themed";
-import { ScrollView, View } from "react-native";
+import { ScrollView, View, RefreshControl } from "react-native";
 import Books from "../components/Books/Books";
+
+const wait = (timeout) => {
+  return new Promise((resolve) => setTimeout(resolve, timeout));
+};
 
 const BooksView = () => {
   const ref = useRef();
+  const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+  console.log(refreshing);
 
   const goTop = () => {
     ref.current.scrollTo({ x: 0, y: 0 });
@@ -12,8 +23,14 @@ const BooksView = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView style={{ backgroundColor: "#fff" }} ref={ref}>
-        <Books />
+      <ScrollView
+        style={{ backgroundColor: "#fff" }}
+        ref={ref}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        <Books refreshing={refreshing} />
       </ScrollView>
       <FAB
         style={{

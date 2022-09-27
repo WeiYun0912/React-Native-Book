@@ -12,7 +12,7 @@ import { Button } from "@rneui/base";
 
 let page = 0;
 
-const ViewBooks = () => {
+const ViewBooks = ({ refreshing }) => {
   const [filterVariables, setFilterVariables] = useState({
     filter: {
       start: 0,
@@ -20,11 +20,15 @@ const ViewBooks = () => {
     },
   });
 
-  const [getBooks, { data, loading, error }] = useLazyQuery(QUERY_BOOKS);
+  const [getBooks, { data, loading, error, refetch }] =
+    useLazyQuery(QUERY_BOOKS);
 
   useEffect(() => {
     getBooks({ variables: filterVariables });
-  }, [filterVariables]);
+    if (refreshing) {
+      refetch();
+    }
+  }, [filterVariables, refreshing]);
 
   if (error) {
     return <Text>{error}</Text>;
