@@ -20,7 +20,7 @@
 
 |託管網站名稱|說明|
 |---|--|
-|onrender|託管Cheerio Server 每15分鐘休眠一次 有用uptimebot去喚醒 所以需要注意時數|
+|render|託管Cheerio Server 每15分鐘休眠一次 有用uptimebot去喚醒 所以需要注意時數|
 |cyclic.sh|託管GrpahQL Server|
 
 
